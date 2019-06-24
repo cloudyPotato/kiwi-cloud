@@ -2,10 +2,10 @@
 Kiwi cloud summer camp challenge
 
 ## Build & Push Docker image
-The `app` folder contains a simple Python Flask application that returns a JSON output on port `8080`. Also, it is configured with a `/healthcheck` enpoint that returns a 200 response when hit.
+The `app` folder contains a simple Python Flask application that returns a JSON output on port `8080`. Also, it is configured with a `/healthcheck` endpoint that returns a 200 response when accessed.
 
 To build the Docker image with the Python Flask application, follow these steps:
-_Note:_ The instructions should be executed from root folder, with the Dockerfile present
+_Note:_ The instructions should be executed from the root folder, with the Dockerfile present
 1. Build the Docker image
 `docker build -t python-flask-app .`
 2. Tag the image
@@ -18,12 +18,12 @@ This section will describe how to create the GKE cluster using Terraform.
 It is assumed that the user has the service account keys to interact with GCP APIs and that the Kubernetes API is enabled.
 
 _Note:_ The instructions should be executed from `infrastructure` folder
-1. Initialise configuration with `terraform init`
+1. Initialize configuration with `terraform init`
 2. See Terraform plan with `terraform plan`
 3. Apply Terraform changes `terraform apply`
 
 ## Connect to the cluster
-To conect to the GKE cluster via CLI run thr following command:
+To connect to the GKE cluster via CLI run the following command:
 
 `gcloud beta container clusters get-credentials k8s-kiwi --region europe-west1 --project ${project_ID`
 
@@ -35,6 +35,6 @@ _Note:_ The instructions should be executed from `k8s_app` folder
 
 1. Once connected to the cluster, deploy the application to the cluster using `kubectl apply   -f . `
 
-This will create a Python Flask application with 3 replicase and a service which will expose the application on port 8080.
+This will create a Python Flask application with 3 replicas and a service that will expose the application on port 8080.
 
 Also, the application is configured with liveness and readiness probes on `/healthcheck` endpoint.
